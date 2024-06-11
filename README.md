@@ -10,7 +10,9 @@ This extension adds segment anything preprocessor inside [Mikubill/sd-webui-cont
 1. Install [continue-revolution/sd-webui-segment-anything](https://github.com/continue-revolution/sd-webui-segment-anything) extension
 1. Download [sam_hq_vit_l.pth](https://huggingface.co/lkeab/hq-sam/resolve/main/sam_hq_vit_l.pth) model and put it into `extensions/sd-webui-segment-anything/models/sam`
 1. Install this extension
-1. *Optional* download [this model](https://huggingface.co/mfidabel/controlnet-segment-anything/raw/main/diffusion_pytorch_model.bin), rename it into `controlnet-segment-anything.pth`, then put it into `models/ControlNet`. You can use this preprocessor with regular segment controlnet models, or even with [GWM_magic_draw_landscape_controlnet](https://civitai.com/models/253564/gwmmagicdrawlandscapecontrolnet)
+1. *Optional* download [this model](https://huggingface.co/mfidabel/controlnet-segment-anything/raw/main/diffusion_pytorch_model.bin), rename it into `controlnet-segment-anything.pth`, then put it into `models/ControlNet`.
+
+You can use this preprocessor with `controlnet-segment-anything.pth` controlnet model and also with regular segment controlnet models [sd-controlnet-seg](https://huggingface.co/lllyasviel/sd-controlnet-seg), [t2i-adapter-sdxl-segmentation](https://huggingface.co/SargeZT/t2i-adapter-sdxl-segmentation), or even with [GWM_magic_draw_landscape_controlnet](https://civitai.com/models/253564/gwmmagicdrawlandscapecontrolnet) (SDXL)
 
 <details>
 <summary>ControlNet unit screenshot</summary>

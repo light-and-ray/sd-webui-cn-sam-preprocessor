@@ -62,7 +62,7 @@ def getTemplate(sam_model_list):
         prefix_id + 'sam_model': shared.OptionInfo(
             sam_model_list[0],
             prefix_label + 'segment anything model',
-            gr.Radio,
+            gr.Dropdown,
             {
                 'choices' : sam_model_list,
             },

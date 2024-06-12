@@ -10,11 +10,8 @@ prefix_label = "CN Preprocessor: "
 def getSegmentAnythingModel(sam_model_list):
     if not sam_model_list:
         raise Exception("There are no sam models")
-    if 'sam_hq_vit_l.pth' in sam_model_list:
-        default = 'sam_hq_vit_l.pth'
-    else:
-        default = sam_model_list[0]
-    res : str = shared.opts.data.get(prefix_id + 'sam_model', default)
+
+    res : str = shared.opts.data.get(prefix_id + 'sam_model', 'sam_hq_vit_l.pth')
     if res not in sam_model_list:
         res = sam_model_list[0]
     return res
@@ -42,7 +39,7 @@ def getAutoSamOptions():
 
 
 def needAutoUnloadModels():
-    opt = shared.opts.data.get(prefix_id + "_always_unload_models", 'Automatic')
+    opt = shared.opts.data.get(prefix_id + "_always_unload_models", 'Enabled')
 
     if opt == 'Enabled':
         return True
@@ -57,10 +54,13 @@ def needAutoUnloadModels():
 def getTemplate(sam_model_list):
     if not sam_model_list:
         sam_model_list = ['not found']
+    defaultModel = 'sam_hq_vit_l.pth'
+    if defaultModel not in sam_model_list:
+        defaultModel = sam_model_list[0]
 
     options = {
         prefix_id + 'sam_model': shared.OptionInfo(
-            sam_model_list[0],
+            defaultModel,
             prefix_label + 'segment anything model',
             gr.Dropdown,
             {

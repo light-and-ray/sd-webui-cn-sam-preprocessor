@@ -28,6 +28,8 @@ You can adjust Auto SAM options used in this module in the Segment Anything sett
 
 ![](images/options.jpg)
 
+You can add them into quick settings or into settings in ui if you want
+
 </details>
 
 

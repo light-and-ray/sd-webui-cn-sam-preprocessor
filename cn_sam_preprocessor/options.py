@@ -4,7 +4,7 @@ from modules import shared
 
 section = ('segment_anything', "Segment Anything")
 prefix_id = 'segment_anything_cn_module_'
-prefix_label = "CN Module: "
+prefix_label = "CN Preprocessor: "
 
 
 def getSegmentAnythingModel(sam_model_list):

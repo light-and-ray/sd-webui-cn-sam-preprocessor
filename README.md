@@ -1,4 +1,4 @@
-# Segment Anything module for ControlNet
+# Segment Anything preprocessor for ControlNet
 
 This extension adds segment anything preprocessor inside [Mikubill/sd-webui-controlnet](https://github.com/Mikubill/sd-webui-controlnet) into [stable-diffusion-webui](https://github.com/AUTOMATIC1111/stable-diffusion-webui)
 

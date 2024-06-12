@@ -41,6 +41,19 @@ def getAutoSamOptions():
     return res
 
 
+def needAutoUnloadModels():
+    opt = shared.opts.data.get(prefix_id + "_always_unload_models", 'Automatic')
+
+    if opt == 'Enabled':
+        return True
+    if opt == 'Disabled':
+        return False
+    if opt == 'Only SDXL':
+        return shared.sd_model.is_sdxl
+
+    return shared.cmd_opts.lowvram or shared.cmd_opts.medvram or (shared.sd_model.is_sdxl and shared.cmd_opts.medvram_sdxl)
+
+
 def getTemplate(sam_model_list):
     if not sam_model_list:
         sam_model_list = ['not found']
@@ -54,7 +67,16 @@ def getTemplate(sam_model_list):
                 'choices' : sam_model_list,
             },
             section=section,
-        )
+        ),
+        prefix_id + "_always_unload_models": shared.OptionInfo(
+            'Enabled',
+            prefix_label + 'Always unload models',
+            gr.Radio,
+            {
+                'choices' : ['Automatic', 'Enabled', 'Only SDXL', 'Disabled'],
+            },
+            section=section,
+        ).info("Automatic means enable only for --lowvram and --medvram mode. "),
     }
 
     def addNumberOption(label: str, value):

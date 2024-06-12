@@ -4,7 +4,7 @@ from scripts.utils import resize_image_with_pad
 from scripts import sam
 from modules import shared
 from cn_sam_module.tools import convertImageIntoPILFormat, convertIntoCNImageFormat
-from cn_sam_module.options import getTemplate, getAutoSamOptions, getSegmentAnythingModel
+from cn_sam_module.options import getTemplate, getAutoSamOptions, getSegmentAnythingModel, needAutoUnloadModels
 
 
 def processAutoSegmentAnything(image: Image.Image):
@@ -22,6 +22,11 @@ class PreprocessorSegmentAnything(Preprocessor):
         super().__init__(name="segment_anything")
         self.tags = ["Segmentation"]
 
+    def unload(self) -> bool:
+        """@Override"""
+        sam.clear_cache()
+        return True
+
     def __call__(
         self,
         input_image,
@@ -35,6 +40,7 @@ class PreprocessorSegmentAnything(Preprocessor):
         img = convertImageIntoPILFormat(img)
 
         result = processAutoSegmentAnything(img)
+        if needAutoUnloadModels(): self.unload()
 
         result = convertIntoCNImageFormat(result)
         result = remove_pad(result)

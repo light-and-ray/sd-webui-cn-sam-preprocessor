@@ -3,7 +3,7 @@ from modules import shared
 
 
 section = ('segment_anything', "Segment Anything")
-prefix_id = 'segment_anything_cn_module_'
+prefix_id = 'segment_anything_cn_preprocessor_'
 prefix_label = "CN Preprocessor: "
 
 
@@ -68,7 +68,7 @@ def getTemplate(sam_model_list):
             },
             section=section,
         ),
-        prefix_id + "_always_unload_models": shared.OptionInfo(
+        prefix_id + "always_unload_models": shared.OptionInfo(
             'Enabled',
             prefix_label + 'Always unload models',
             gr.Radio,

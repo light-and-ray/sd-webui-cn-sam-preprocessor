@@ -18,8 +18,10 @@ def processAutoSegmentAnything(image: Image.Image):
 
 
 class PreprocessorSegmentAnything(Preprocessor):
+    NAME = "segment_anything"
+
     def __init__(self):
-        super().__init__(name="segment_anything")
+        super().__init__(name=self.NAME)
         self.tags = ["Segmentation"]
 
     def unload(self) -> bool:
@@ -47,5 +49,6 @@ class PreprocessorSegmentAnything(Preprocessor):
         return result
 
 
-Preprocessor.add_supported_preprocessor(PreprocessorSegmentAnything())
 shared.options_templates.update(getTemplate(sam.sam_model_list))
+if not Preprocessor.get_preprocessor(PreprocessorSegmentAnything.NAME):
+    Preprocessor.add_supported_preprocessor(PreprocessorSegmentAnything())

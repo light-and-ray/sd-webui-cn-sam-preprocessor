@@ -3,8 +3,8 @@ from scripts.supported_preprocessor import Preprocessor
 from scripts.utils import resize_image_with_pad
 from scripts import sam
 from modules import shared
-from cn_sam_module.tools import convertImageIntoPILFormat, convertIntoCNImageFormat
-from cn_sam_module.options import getTemplate, getAutoSamOptions, getSegmentAnythingModel, needAutoUnloadModels
+from cn_sam_preprocessor.tools import convertImageIntoPILFormat, convertIntoCNImageFormat
+from cn_sam_preprocessor.options import getTemplate, getAutoSamOptions, getSegmentAnythingModel, needAutoUnloadModels
 
 
 def processAutoSegmentAnything(image: Image.Image):

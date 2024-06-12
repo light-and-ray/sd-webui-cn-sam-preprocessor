@@ -34,7 +34,7 @@ You can adjust Auto SAM options used in this module in the Segment Anything sett
 <details>
 <summary>Extras tab</summary>
 
-You can also use this module inside Extras tab with my other extension [sd-webui-cn-in-extras-tab](https://github.com/light-and-ray/sd-webui-cn-in-extras-tab)
+You can also use this preprocessor inside Extras tab with my other extension [sd-webui-cn-in-extras-tab](https://github.com/light-and-ray/sd-webui-cn-in-extras-tab)
 
 ![](images/extras.jpg)
 

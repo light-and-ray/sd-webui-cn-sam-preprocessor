@@ -51,6 +51,10 @@ def needAutoUnloadModels():
     return shared.cmd_opts.lowvram or shared.cmd_opts.medvram or (shared.sd_model.is_sdxl and shared.cmd_opts.medvram_sdxl)
 
 
+def avoidOOM():
+    res : bool = shared.opts.data.get(prefix_id + 'avoid_oom', True)
+    return res
+
 def getTemplate(sam_model_list):
     if not sam_model_list:
         sam_model_list = ['not found']
@@ -68,6 +72,12 @@ def getTemplate(sam_model_list):
             },
             section=section,
         ),
+        prefix_id + 'avoid_oom': shared.OptionInfo(
+            True,
+            prefix_label + 'Try to avoid OOM',
+            section=section,
+        ).info("Automatic SAM segmentation requires much more VRAM them regular segment anything. "
+               "With this option in case of OOM it will try to unload SD model, if don't help, use CPU"),
         prefix_id + "always_unload_models": shared.OptionInfo(
             'Enabled',
             prefix_label + 'Always unload models',
